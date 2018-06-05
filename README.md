@@ -52,9 +52,9 @@ DrawView view = (DrawView) findViewById(R.id.graph) ;
         drawRect(float left, float top, float right, float bottom): bool
         getPaint(): Paint
         setPaint(Paint paint): void
-        setAutoInvalidate(boolean st): void
-        getAutoInvalidate(): bool
-        invalidate(): void
+        setAutoRedraw(boolean st): void
+        getAutoRedraw(): bool
+        redraw(): void
 ```
 Note: Function that draw will return a boolean if drawn successfully.
 
