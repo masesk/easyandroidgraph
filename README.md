@@ -59,10 +59,11 @@ DrawView view = (DrawView) findViewById(R.id.graph) ;
 Note: Function that draw will return a boolean if drawn successfully.
 
 (7) IMPORTANT ADDITIONAL NOTES
-*Paint is a built in Android class used to determine important visual factors such as color and width.<br>
+
+* Paint is a built in Android class used to determine important visual factors such as color and width.<br>
 Create a new instance of paint, change it's settings, and pass it to setPaint(Paint) function to change <br>
 drawing colors, witdth, and other settings.
-*To save memory and speed up your app during executing, auto redrawing (invalidation) is discouraged if<br>
+* To save memory and speed up your app during executing, auto redrawing (invalidation) is discouraged if<br>
 excessive drawing is done. Set auto invalidating through setAutoInvalidate(boolean) to false, and manually<br>
 call invaldate() when necessary.
 
