@@ -66,6 +66,7 @@ drawing colors, witdth, and other settings.
 * To save memory and speed up your app during executing, auto redrawing (invalidation) is discouraged if<br>
 excessive drawing is done. Set auto invalidating through setAutoInvalidate(boolean) to false, and manually<br>
 call invaldate() when necessary.
+* Decide whether or not you want to keep auto redraw true or false once after you initilize an instance of DrawView class.
 
 ## Licence
 
