@@ -18,6 +18,7 @@ public class DrawView extends View {
     private float y = 0;
     private int type = 0x0;
     private static boolean autoInvalidate = false;;
+	private static boolean calledFromRedraw = false;
     private ArrayList<GraphObject> objects = new ArrayList<GraphObject>();
     Paint paint = new Paint();
     public DrawView(final Context context, AttributeSet attr) {
@@ -58,7 +59,10 @@ public class DrawView extends View {
 	            }
 	
 	        }
-	        autoInvalidate = false;
+	        if(calledFromRedraw){
+				calledFromRedraw = false;
+				autoInvalidate = false;
+			}
         }
 
     }
@@ -112,7 +116,13 @@ public class DrawView extends View {
     }
     
     public void redraw(){
-    	autoInvalidate = true;
-    	this.invalidate();
+    	if(autoInvalidate){
+			calledFromRedraw = true;
+			autoInvalidate = true;
+			this.invalidate();
+		}
+		else{
+			this.invalidate();
+		}
     }
 }
