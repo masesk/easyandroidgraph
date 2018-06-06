@@ -62,9 +62,9 @@ Note: Function that draw will return a boolean if drawn successfully.
 
 * Paint is a built in Android class used to determine important visual factors such as color and width.<br>
 Create a new instance of paint, change it's settings, and pass it to setPaint(Paint) function to change <br>
-drawing colors, witdth, and other settings.
+drawing colors, witdth, and other visual settings.
 * To save memory and speed up your app during executing, auto redrawing (invalidation) is discouraged if<br>
-excessive drawing is done. Set auto invalidating through setAutoInvalidate(boolean) to false, and manually<br>
+excessive drawing is done. Set auto invalidating through setAutoRedraw(boolean) to false, and manually<br>
 call redraw() when necessary.
 * Decide whether or not you want to keep auto redraw true or false once after you initilize an instance of DrawView class.
 
