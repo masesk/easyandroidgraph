@@ -17,8 +17,8 @@ public class DrawView extends View {
     private float x = 0;
     private float y = 0;
     private int type = 0x0;
-    private static boolean autoInvalidate = false;;
-	private static boolean calledFromRedraw = false;
+    private static boolean autoInvalidate = false;
+    private static boolean calledFromRedraw = false;
     private ArrayList<GraphObject> objects = new ArrayList<GraphObject>();
     Paint paint = new Paint();
     public DrawView(final Context context, AttributeSet attr) {
