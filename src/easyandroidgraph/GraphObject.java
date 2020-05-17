@@ -1,29 +1,41 @@
-package easyandroidgraph;
+package com.example.easyandroidgraphtest;
 
 import android.graphics.Bitmap;
+import android.graphics.Paint;
 import android.graphics.Point;
 
 /**
- * Created by radon on 2/4/2018.
+ * Created by Mases Krikorian on 2/4/2018.
  */
-
+enum GraphType {
+    POINT,
+    CIRCLE,
+    OVAL,
+    RECTANGLE,
+    LINE,
+    BITMAP
+}
 public class GraphObject {
-    private int type = 0x0; //0x1 point // 0x2 circle // 0x3 rect // 0x4 line // 0x5 oval //0x6 Bitmap
+    private GraphType type;
     private float nums[] = new float[4];
     private Bitmap bitmap = null;
+    private Paint paint;
 
-    public GraphObject(float num1, float num2){
-        type = 0x1; //line
+    public GraphObject(float num1, float num2, GraphType type, Paint paint){
+        this.paint = paint;
+        this.type = type; //line
         nums[0] = num1;
         nums[1] = num2;
     }
-    public GraphObject(float radius, float x, float y){
-        type = 0x2; //circle
+    public GraphObject(float radius, float x, float y, GraphType type, Paint paint){
+        this.paint = paint;
+        this.type = type; //circle
         nums[0] = radius;
         nums[1] = x;
         nums[2] = y;
     }
-    public GraphObject(float num1, float num2, float num3, float num4, int type) {
+    public GraphObject(float num1, float num2, float num3, float num4, GraphType type, Paint paint) {
+        this.paint = paint;
         this.type = type;
         nums[0] = num1;
         nums[1] = num2;
@@ -31,12 +43,14 @@ public class GraphObject {
         nums[3] = num4;
     }
 
-    public GraphObject(float x, float y, Bitmap bitmap){
+    public GraphObject(float x, float y, Bitmap bitmap, GraphType type, Paint paint){
+        this.paint = paint;
+        this.type = type;
         this.bitmap = bitmap;
         nums[0] = x;
         nums[1] = y;
     }
-    public int getType(){
+    public GraphType getType(){
         return type;
     }
     public float[] getNums(){
@@ -57,4 +71,5 @@ public class GraphObject {
     public Bitmap getBitmap(){
         return bitmap;
     }
+    public Paint getPaint() { return paint; }
 }
