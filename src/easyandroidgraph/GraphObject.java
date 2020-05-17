@@ -1,5 +1,3 @@
-package com.example.easyandroidgraphtest;
-
 import android.graphics.Bitmap;
 import android.graphics.Paint;
 import android.graphics.Point;
