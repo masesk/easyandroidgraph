@@ -11,67 +11,110 @@ points, lines, shapes, and bitmaps.
 
 
 
-## Getting Started
+## Installation
+
+### Option 1 (RECOMMENDED): Download JAR File
+
+1. Head over to [latest releases](https://github.com/masesk/easyandroidgraph/releases) and download the latest JAR file.
+
+2. Add the JAR file as an external library to  your code. [Here is an example for Android Studio](https://stackoverflow.com/questions/25660166/how-to-add-a-jar-in-external-libraries-in-android-studio).
 
 
-#### Using Easy Android Graph
+### Option 2: Source
+1. Clone the [easyandroidgraph git repo](https://github.com/masesk/easyandroidgraph).
+2. Copy the contents of the source folder into your own project's src folder.
 
-(1) Download and import the easyandroidgraph.jar file into your android project. To do this, simply download this as zip, extract it, and import the file into <projectname>\app\libs
 
-(2) Re-Sync project if your IDE does not automatically detect new libraries
 
-(3) In your XML, declare the layout for easyandroidgraph.DrawView. Here is an example:
-```bash
-    <easyandroidgraph.DrawView
-        android:id="@+id/graph"
+## How to use
+
+easyandroidgraph provides you with a single view that can be added to a layout and contains utility functions to draw on said view.
+
+### Import
+```
+import com.masesk.easyandroidgraph.DrawView;
+```
+**NOTE: com.masesk.easyandroidgraph would be replaced with your package name if you use the source installation.**
+
+### Layout as XML (RECOMMENDED)
+
+Use the following in your layout XML as an example:
+
+```
+    <com.masesk.easyandroidgraph.DrawView
+        android:id="@+id/drawView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-```
-In the example above, id name can be set to anything but needs to be consistent to Java code. Width and height<br>
-are required but can be assigned to other values.
-
-(4) In your Java activity section, declare a new instance of DrawView
-```bash
-DrawView view = (DrawView) findViewById(R.id.graph) ;
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
 ```
 
-(5) Now your view object of class DrawView can be used to draw on the graph layout. Here is an example:
+**NOTE: com.masesk.easyandroidgraph would be replaced with your package name if you use the source installation.**
 
-```bash
-        view.drawRect(100, 200, 300, 400);
-        view.drawPoint(500,100);
-        view.drawLine(300, 400, 500, 500);
+**NOTE: Change the id ("drawView" in this example) as need but keep track of it**
+
+Use the following in your Java Activity as an example:
+```
+ DrawView drawView = findViewById(R.id.drawView);
 ```
 
-(6) Here are the function that can be used and how to use them:
-```bash
-        drawCircle(float x, float y, float radius): bool
-        drawBitmap(Bitmap bitmap, float x, float y): bool
-        drawOval(float left, float top, float right, float bottom): bool
-        drawLine(float startX, float startY, float endX, float endY): bool
-        drawRect(float left, float top, float right, float bottom): bool
-        getPaint(): Paint
-        setPaint(Paint paint): void
-        setAutoRedraw(boolean st): void
-        getAutoRedraw(): bool
-        redraw(): void
+### Layout as Java
+
+Use the following in your Java Activity as an example:
+
 ```
-Note: Function that draw will return a boolean if drawn successfully.
+DrawView drawView = new DrawView(context, attributeSet);
+layout.addView(view);
+```
 
-(7) IMPORTANT ADDITIONAL NOTES
+## Functions 
 
-* Paint is a built in Android class used to determine important visual factors such as color and width.<br>
-Create a new instance of paint, change it's settings, and pass it to setPaint(Paint) function to change <br>
-drawing colors, witdth, and other visual settings.
-* To save memory and speed up your app during executing, auto redrawing (invalidation) is discouraged if<br>
-excessive drawing is done. Set auto invalidating through setAutoRedraw(boolean) to false, and manually<br>
-call redraw() when necessary.
-* Decide whether or not you want to keep auto redraw true or false once after you initilize an instance of DrawView class.
+```
+drawCircle(String id, float x, float y, float radius, Paint paint, boolean visible): bool
+        
+drawBitmap(String id, Bitmap bitmap, float x, float y, Paint paint, boolean visible): bool
+        
+drawOval(String id, float left, float top, float right, float bottom, Paint paint, boolean visible): bool
 
-## Licence
+drawLine(String id, float startX, float startY, float endX, float endY, Paint paint, boolean visible): bool
 
-Source code can be found on [github](https://github.com/masesk/easyandroidgraph). <br>
-[![Screen Shot](https://licensebuttons.net/l/by/4.0/88x31.png)This work is licensed under a Creative Commons Attribution 4.0 International License.](https://creativecommons.org/licenses/by/4.0/)
+drawRect(String id, float left, float top, float right, float bottom, Paint paint, boolean visible): bool
+
+show(String id): bool
+
+hide(String id): bool
+
+remove(String id): bool
+
+getDefaultPaint(): Paint
+
+setDefaultPaint(Paint paint): void
+
+setAutoRedraw(boolean st): void
+
+getAutoRedraw(): bool
+
+redraw(): void
+```
+
+### Additional Information
+
+```
+-- String id: 
+        Unique for each shape. Useful for updating shape location, size, type, or visiblity state. Simply call draw function with the same id to update any of mentioned features.
+
+-- Paint paint:
+        Object containing information about visuals of the shape. If passed null, default paint will be used.
+
+-- Boolean visible:
+        Visibility of the shape when it is created or updated.
+
+-- Boolean autoRedraw & redraw():
+        When set true, the canvas will redraw whenever any draw function is called. Can improve efficiency if redraw() is called to redraw; avoiding the canvas update every frame tick.
+```
+
+
+
+Source code can be found on [github](https://github.com/masesk/easyandroidgraph). 
 
 Developed by [Mases Krikorian](http://masesk.com)
 
