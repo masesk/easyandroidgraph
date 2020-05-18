@@ -1,3 +1,5 @@
+package com.example.easyandroidgraphtest;
+
 import android.graphics.Bitmap;
 import android.graphics.Paint;
 import android.graphics.Point;
@@ -18,21 +20,28 @@ public class GraphObject {
     private float nums[] = new float[4];
     private Bitmap bitmap = null;
     private Paint paint;
+    private boolean visiable = true;
 
-    public GraphObject(float num1, float num2, GraphType type, Paint paint){
+    public GraphObject(float num1, float num2, GraphType type, Paint paint,
+                       boolean visible){
+        this.visiable = visible;
         this.paint = paint;
         this.type = type; //line
         nums[0] = num1;
         nums[1] = num2;
     }
-    public GraphObject(float radius, float x, float y, GraphType type, Paint paint){
+    public GraphObject(float radius, float x, float y, GraphType type, Paint paint,
+                       boolean visible){
+        this.visiable = visible;
         this.paint = paint;
         this.type = type; //circle
         nums[0] = radius;
         nums[1] = x;
         nums[2] = y;
     }
-    public GraphObject(float num1, float num2, float num3, float num4, GraphType type, Paint paint) {
+    public GraphObject(float num1, float num2, float num3, float num4, GraphType type,
+                       Paint paint, boolean visible) {
+        this.visiable = visible;
         this.paint = paint;
         this.type = type;
         nums[0] = num1;
@@ -41,13 +50,21 @@ public class GraphObject {
         nums[3] = num4;
     }
 
-    public GraphObject(float x, float y, Bitmap bitmap, GraphType type, Paint paint){
+    public GraphObject(float x, float y, Bitmap bitmap, GraphType type, Paint paint,
+                       boolean visible){
+        this.visiable = visible;
         this.paint = paint;
         this.type = type;
         this.bitmap = bitmap;
         nums[0] = x;
         nums[1] = y;
     }
+
+    public void setVisible(boolean visibility){
+        this.visiable = visibility;
+    }
+
+    public boolean isVisible(){ return visiable; }
     public GraphType getType(){
         return type;
     }
@@ -70,4 +87,5 @@ public class GraphObject {
         return bitmap;
     }
     public Paint getPaint() { return paint; }
+
 }
