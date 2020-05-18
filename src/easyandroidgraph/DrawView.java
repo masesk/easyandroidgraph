@@ -1,4 +1,4 @@
-package com.example.easyandroidgraphtest;
+package com.masesk.easyandroidgraph;
 
 import android.content.Context;
 import android.graphics.Bitmap;
